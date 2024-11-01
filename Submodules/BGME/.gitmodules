@@ -1,0 +1,24 @@
+[submodule "PersonaMusicScript"]
+	path = PersonaMusicScript
+	url = https://github.com/T-PoseRatkechi/PersonaMusicScript.git
+[submodule "submodules/CriFs.V2.Hook.ReloadedII"]
+	path = submodules/CriFs.V2.Hook.ReloadedII
+	url = https://github.com/Sewer56/CriFs.V2.Hook.ReloadedII.git
+[submodule "submodules/Libellus-Event-Tools"]
+	path = submodules/Libellus-Event-Tools
+	url = https://github.com/T-PoseRatkechi/Libellus-Event-Tools.git
+[submodule "submodules/PersonaModdingMetadata"]
+	path = submodules/PersonaModdingMetadata
+	url = https://github.com/T-PoseRatkechi/PersonaModdingMetadata.git
+[submodule "submodules/Project.Utils"]
+	path = submodules/Project.Utils
+	url = https://github.com/T-PoseRatkechi/Project.Utils.git
+[submodule "submodules/P5R.ModdingToolkit"]
+	path = submodules/P5R.ModdingToolkit
+	url = https://github.com/T-PoseRatkechi/P5R.ModdingToolkit.git
+[submodule "submodules/Ryo"]
+	path = submodules/Ryo
+	url = https://github.com/T-PoseRatkechi/Ryo.git
+[submodule "submodules/SharedScans"]
+	path = submodules/SharedScans
+	url = https://github.com/T-PoseRatkechi/SharedScans.git

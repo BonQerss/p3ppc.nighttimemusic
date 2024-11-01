@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "PersonaModdingMetadata.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "$(SolutionDir)"
+    }
+  }
+}

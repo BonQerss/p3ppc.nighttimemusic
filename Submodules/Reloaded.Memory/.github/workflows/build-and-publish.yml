@@ -1,0 +1,100 @@
+name: Build, Test and Publish
+on:
+  push:
+    branches: [ master, refactor-reloaded3-compliance ]
+    paths:
+      - "src/**"
+    tags:
+      - '*'
+  pull_request:
+    branches: [ master, refactor-reloaded3-compliance ]
+    paths:
+      - "src/**"
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          - windows-latest
+          - ubuntu-latest
+          - macos-13
+        targetFramework:
+          - net8.0
+          - net7.0
+          - net6.0
+          - net5.0
+          - netcoreapp3.1
+        platform:
+          - x64
+        include:
+          - os: windows-latest
+            targetFramework: net48
+            platform: x64
+          - os: windows-latest
+            targetFramework: net48
+            platform: x86
+          - os: windows-latest
+            targetFramework: net7.0
+            platform: x86
+          - os: windows-latest
+            targetFramework: net6.0
+            platform: x86
+          - os: windows-latest
+            targetFramework: net5.0
+            platform: x86
+          - os: windows-latest
+            targetFramework: netcoreapp3.1
+            platform: x86
+    
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: Setup Reloaded Library SDKs & Components
+        uses: Reloaded-Project/Reloaded.Project.Configurations/.github/actions/setup-sdks-components@main
+      - name: Build Library
+        run: dotnet build -f ${{ matrix.targetFramework }} ./src/Reloaded.Memory.Tests/Reloaded.Memory.Tests.csproj
+      - name: Run Tests
+        run: dotnet test -f ${{ matrix.targetFramework }} ./src/Reloaded.Memory.Tests/Reloaded.Memory.Tests.csproj --collect:"XPlat Code Coverage;" --results-directory "Coverage"
+      - name: "Upload Coverage"
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-${{ matrix.os }}-${{ matrix.targetFramework }}-${{ matrix.platform }}
+          path: Coverage/*/coverage.cobertura.xml
+  upload:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Code"
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+      - name: "Setup Reloaded Library SDKs & Components"
+        uses: Reloaded-Project/Reloaded.Project.Configurations/.github/actions/setup-sdks-components@main
+      - name: Build Library
+        run: dotnet build -c Release ./src
+      - name: "Install ReportGenerator"
+        run: dotnet tool install --global dotnet-reportgenerator-globaltool
+      - name: "Download Coverage Artifacts"
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: "Merge Coverage Files"
+        run: |
+          dotnet tool install --global dotnet-coverage
+          dotnet-coverage merge ./artifacts/*.cobertura.xml --recursive --output ./Cobertura.xml --output-format xml
+      - name: "Upload Coverage & Packages"
+        uses: Reloaded-Project/Reloaded.Project.Configurations/.github/actions/upload-coverage-packages@main
+        with:
+          code-coverage-path: './Cobertura.xml'
+          changelog-path: './Changelog.md'
+          nupkg-glob: '**.nupkg'
+          snupkg-glob: '**.snupkg'
+          nuget-key: ${{ secrets.NUGET_KEY }}
+          changelog-template: 'keepachangelog'
+          is-release: ${{ startsWith(github.ref, 'refs/tags/') }}
+          release-tag: ${{ github.ref_name }}

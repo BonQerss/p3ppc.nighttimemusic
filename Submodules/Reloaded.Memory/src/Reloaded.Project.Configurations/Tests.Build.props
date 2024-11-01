@@ -1,0 +1,27 @@
+<Project>
+
+  <!-- Import a Directory.Build.props file located in the parent directory -->
+  <Import Project="$(MSBuildThisFileDirectory)./Directory.Build.props"/>
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net7.0;net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.0"/>
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.18.0"/>
+    <PackageReference Include="FluentAssertions" Version="6.10.0"/>
+    <PackageReference Include="JetBrains.Annotations" Version="2023.2.0-eap2"/>
+    <PackageReference Include="Moq" Version="4.18.4"/>
+    <PackageReference Include="Xunit.DependencyInjection" Version="8.7.1"/>
+    <PackageReference Include="coverlet.collector" Version="3.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.msbuild" Version="3.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

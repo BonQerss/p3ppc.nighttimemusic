@@ -104,6 +104,9 @@ namespace p3ppc.nighttimemusic
             if (_configuration.MusicSelection == Config.NightMusic.TimeVocals)
                 criFsApi.AddProbingPath(Path.Combine(modDir, "Time (Vocals)", "P5REssentials", "CPK"));
 
+            if (_configuration.MusicSelection == Config.NightMusic.ColorYourNight)
+                criFsApi.AddProbingPath(Path.Combine(modDir, "Color Your Night", "P5REssentials", "CPK"));
+
 
             SigScan("48 89 5C 24 ?? 48 89 74 24 ?? 57 48 83 EC 20 8B D9 41 8B F0 48 8D 0D ?? ?? ?? ?? 8B FA E8 ?? ?? ?? ?? 85 F6", "Field BGM", address =>
             {

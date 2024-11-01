@@ -1,0 +1,1 @@
+﻿Please visit the [documentation site for usage instructions & more](https://reloaded-project.github.io/Reloaded.MkDocsMaterial.Themes.R2/).

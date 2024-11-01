@@ -32,10 +32,11 @@ namespace p3ppc.nighttimemusic.Configuration
             TimeVocals,
             MidnightReverie,
             NightWanderer,
+            ColorYourNight,
         }
 
         [DisplayName("Night Music")]
-        [Description("Choose which music to play outside at night.\n\nTime: Plays 'Time (Night Version)' by MOSQ_ at night.\nTimeVocals: Plays 'Time (Night Version) (Vocals)' by MOSQ_ at night.\nMidnightReverie: Plays 'Midnight Reverie' by MineFormer at night.\nNightWanderer: Plays 'Night Wanderer' by MOSQ_ at night.")]
+        [Description("Choose which music to play outside at night.\n\nTime: Plays 'Time (Night Version)' by MOSQ_ at night.\nTimeVocals: Plays 'Time (Night Version) (Vocals)' by MOSQ_ at night.\nMidnightReverie: Plays 'Midnight Reverie' by MineFormer at night.\nNightWanderer: Plays 'Night Wanderer' by MOSQ_ at night.\nColor Your Night: Plays 'Color Your Night' from P3R at night.")]
         [DefaultValue(true)]
         public NightMusic MusicSelection { get; set; } = NightMusic.Time;
         //public bool Time { get; set; } = true; // bool used in Mod.CS, not the folder name, but the bool name

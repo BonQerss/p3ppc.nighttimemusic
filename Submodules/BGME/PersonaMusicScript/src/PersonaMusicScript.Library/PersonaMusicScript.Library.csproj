@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Antlr4 Include="Source.g4" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+    <PackageReference Include="Antlr4BuildTasks" Version="12.2.0" />
+    <PackageReference Include="protobuf-net" Version="3.2.26" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <Folder Include="Libraries\" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <Reference Include="Phos.MusicManager.Library">
+      <HintPath>Libraries\Phos.MusicManager.Library.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+    
+  <ItemGroup>
+	<Content Include="..\..\submodules\PersonaModdingMetadata\Persona.Encounters.Metadata\**">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+	<Content Include="..\..\submodules\PersonaModdingMetadata\Persona.Music.Metadata\**">
+		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</Content>
+  </ItemGroup>
+    
+  <ItemGroup>
+    <Content Remove="..\..\submodules\PersonaModdingMetadata\Persona.Encounters.Metadata\Persona.Encounters.Metadata.csproj" />
+    <Content Remove="..\..\submodules\PersonaModdingMetadata\Persona.Music.Metadata\Persona.Music.Metadata.csproj" />
+  </ItemGroup>
+    
+  <ItemGroup>
+    <ProjectReference Include="..\..\submodules\PersonaModdingMetadata\PersonaModdingMetadata.Shared\PersonaModdingMetadata.Shared.csproj" />
+    <ProjectReference Include="..\PersonaMusicScript.Types\PersonaMusicScript.Types.csproj" />
+  </ItemGroup>
+</Project>

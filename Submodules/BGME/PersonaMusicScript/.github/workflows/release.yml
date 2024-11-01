@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    defaults:
+      run:
+        working-directory: ./src
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Build project (Release)
+        run: dotnet publish ./PersonaMusicScript.CLI -c Release -o ./PersonaMusicScript
+
+      - name: Zip folder
+        run: Compress-Archive -Path ./PersonaMusicScript -DestinationPath ./PersonaMusicScript.zip
+      - name: Test dir
+        run: dir
+      - name: Release
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          files: ./src/PersonaMusicScript.zip
+          fail_on_unmatched_files: true
