@@ -1,0 +1,189 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj",
+        "projectName": "p3ppc.nighttimemusic",
+        "projectPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj",
+        "packagesPath": "C:\\Users\\airin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\airin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
+            "projectReferences": {
+              "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj": {
+                "projectPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "Reloaded.Memory.SigScan.ReloadedII.Interfaces": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            },
+            "Reloaded.Mod.Interfaces": {
+              "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Reloaded.SharedLib.Hooks": {
+              "target": "Package",
+              "version": "[1.9.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj",
+        "projectName": "CriFs.V2.Hook.Interfaces",
+        "projectPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj",
+        "packagesPath": "C:\\Users\\airin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\airin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "CriFsV2Lib.Definitions": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Reloaded.Memory": {
+              "target": "Package",
+              "version": "[9.4.2, )"
+            },
+            "Reloaded.Memory.SigScan.ReloadedII.Interfaces": {
+              "target": "Package",
+              "version": "[1.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.20, 7.0.20]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

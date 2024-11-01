@@ -1,0 +1,351 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0-windows7.0": {
+      "CriFsV2Lib.Definitions/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/CriFsV2Lib.Definitions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/CriFsV2Lib.Definitions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.Hooks.Definitions/1.11.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Reloaded.Hooks.Definitions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/Reloaded.Hooks.Definitions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.Memory/9.4.2": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Reloaded.Memory.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Reloaded.Memory.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.Memory.Sigscan.Definitions/1.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Reloaded.Memory.Sigscan.Definitions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Reloaded.Memory.Sigscan.Definitions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.Memory.SigScan.ReloadedII.Interfaces/1.2.0": {
+        "type": "package",
+        "dependencies": {
+          "Reloaded.Memory.Sigscan.Definitions": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Reloaded.Memory.SigScan.ReloadedII.Interfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Reloaded.Memory.SigScan.ReloadedII.Interfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.Mod.Interfaces/2.4.0": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/Reloaded.Mod.Interfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/_._": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Reloaded.SharedLib.Hooks/1.9.0": {
+        "type": "package",
+        "dependencies": {
+          "Reloaded.Hooks.Definitions": "1.11.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Reloaded.Hooks.ReloadedII.Interfaces.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Reloaded.Hooks.ReloadedII.Interfaces.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "CriFs.V2.Hook.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "CriFsV2Lib.Definitions": "1.1.0",
+          "Reloaded.Memory": "9.4.2",
+          "Reloaded.Memory.SigScan.ReloadedII.Interfaces": "1.2.0"
+        },
+        "compile": {
+          "bin/placeholder/CriFs.V2.Hook.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CriFs.V2.Hook.Interfaces.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CriFsV2Lib.Definitions/1.1.0": {
+      "sha512": "hPvJ4DR16lVSYHSddUsMTUQLajCALhNA+GDfAY0VMa4xSvBOEbZeCuj2tYO8GqeQMyiosL0/aRaFZ2OgFefRKA==",
+      "type": "package",
+      "path": "crifsv2lib.definitions/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "crifsv2lib.definitions.1.1.0.nupkg.sha512",
+        "crifsv2lib.definitions.nuspec",
+        "lib/net7.0/CriFsV2Lib.Definitions.dll",
+        "lib/net7.0/CriFsV2Lib.Definitions.xml"
+      ]
+    },
+    "Reloaded.Hooks.Definitions/1.11.0": {
+      "sha512": "/z0AwcCvVTQHlQ9SMMMBqKEIrm5t/yBFPylySW2Rnr7uRGV9jGfoACFe79KZKF976dhtkyy2xl0HIXz5hRUkng==",
+      "type": "package",
+      "path": "reloaded.hooks.definitions/1.11.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net5.0/Reloaded.Hooks.Definitions.dll",
+        "lib/net5.0/Reloaded.Hooks.Definitions.xml",
+        "lib/net6.0/Reloaded.Hooks.Definitions.dll",
+        "lib/net6.0/Reloaded.Hooks.Definitions.xml",
+        "lib/netcoreapp3.0/Reloaded.Hooks.Definitions.dll",
+        "lib/netcoreapp3.0/Reloaded.Hooks.Definitions.xml",
+        "lib/netstandard2.0/Reloaded.Hooks.Definitions.dll",
+        "lib/netstandard2.0/Reloaded.Hooks.Definitions.xml",
+        "reloaded.hooks.definitions.1.11.0.nupkg.sha512",
+        "reloaded.hooks.definitions.nuspec"
+      ]
+    },
+    "Reloaded.Memory/9.4.2": {
+      "sha512": "yrjimngdXs7evlk/ZFbzP0uppTf0Og+LFFonITgpzZ94HmVOi8b+29YFfYdWTbf68qUzGP0D4s0VsMhaGerg5g==",
+      "type": "package",
+      "path": "reloaded.memory/9.4.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "Reloaded-Icon.png",
+        "lib/net48/Reloaded.Memory.dll",
+        "lib/net48/Reloaded.Memory.xml",
+        "lib/net5.0/Reloaded.Memory.dll",
+        "lib/net5.0/Reloaded.Memory.xml",
+        "lib/net6.0/Reloaded.Memory.dll",
+        "lib/net6.0/Reloaded.Memory.xml",
+        "lib/net7.0/Reloaded.Memory.dll",
+        "lib/net7.0/Reloaded.Memory.xml",
+        "lib/net8.0/Reloaded.Memory.dll",
+        "lib/net8.0/Reloaded.Memory.xml",
+        "lib/netcoreapp3.1/Reloaded.Memory.dll",
+        "lib/netcoreapp3.1/Reloaded.Memory.xml",
+        "lib/netstandard2.0/Reloaded.Memory.dll",
+        "lib/netstandard2.0/Reloaded.Memory.xml",
+        "lib/netstandard2.1/Reloaded.Memory.dll",
+        "lib/netstandard2.1/Reloaded.Memory.xml",
+        "reloaded.memory.9.4.2.nupkg.sha512",
+        "reloaded.memory.nuspec"
+      ]
+    },
+    "Reloaded.Memory.Sigscan.Definitions/1.1.0": {
+      "sha512": "jJYe9pZAzdK0MSaSOmMFPWZ5258YYcn89MnQVnb1AY8QrIf9KmhBOYwNPuc7f0hPV9lIr1i4w3La/ngnaA5Ylg==",
+      "type": "package",
+      "path": "reloaded.memory.sigscan.definitions/1.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/netcoreapp3.1/Reloaded.Memory.Sigscan.Definitions.dll",
+        "lib/netcoreapp3.1/Reloaded.Memory.Sigscan.Definitions.xml",
+        "lib/netstandard2.0/Reloaded.Memory.Sigscan.Definitions.dll",
+        "lib/netstandard2.0/Reloaded.Memory.Sigscan.Definitions.xml",
+        "reloaded.memory.sigscan.definitions.1.1.0.nupkg.sha512",
+        "reloaded.memory.sigscan.definitions.nuspec"
+      ]
+    },
+    "Reloaded.Memory.SigScan.ReloadedII.Interfaces/1.2.0": {
+      "sha512": "iRorTjJJA2d+u6hqv4C9fKbdC8KQN3bQ0bRpWv/4MoK6bTcDzetJhBgbsB5opgNJXb97KxFupxZlS84ykMxqTg==",
+      "type": "package",
+      "path": "reloaded.memory.sigscan.reloadedii.interfaces/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/Reloaded.Memory.SigScan.ReloadedII.Interfaces.dll",
+        "lib/netstandard2.0/Reloaded.Memory.SigScan.ReloadedII.Interfaces.xml",
+        "reloaded.memory.sigscan.reloadedii.interfaces.1.2.0.nupkg.sha512",
+        "reloaded.memory.sigscan.reloadedii.interfaces.nuspec"
+      ]
+    },
+    "Reloaded.Mod.Interfaces/2.4.0": {
+      "sha512": "HKQu7M0MyToKU4NK5Ula29MXSNeHz01ZzMK9BWD+xqJCITemAPdMW+w60Swln3ceGCU/ZooFSKtn4I8rcSA9AQ==",
+      "type": "package",
+      "path": "reloaded.mod.interfaces/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "NuGet-Icon.png",
+        "lib/netcoreapp3.1/Reloaded.Mod.Interfaces.dll",
+        "lib/netcoreapp3.1/Reloaded.Mod.Interfaces.xml",
+        "reloaded.mod.interfaces.2.4.0.nupkg.sha512",
+        "reloaded.mod.interfaces.nuspec"
+      ]
+    },
+    "Reloaded.SharedLib.Hooks/1.9.0": {
+      "sha512": "AEDTDhCnYxJGuLrdZCZPoiqrdl/lW4XwA6bb5dntOvkyw4RBBm/gqoNlHS7RJS7k+kt36ES+UFZAtBeyusYtgw==",
+      "type": "package",
+      "path": "reloaded.sharedlib.hooks/1.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/netstandard2.0/Reloaded.Hooks.ReloadedII.Interfaces.dll",
+        "lib/netstandard2.0/Reloaded.Hooks.ReloadedII.Interfaces.xml",
+        "reloaded.sharedlib.hooks.1.9.0.nupkg.sha512",
+        "reloaded.sharedlib.hooks.nuspec"
+      ]
+    },
+    "CriFs.V2.Hook.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Submodules/CriFs.V2.Hook.ReloadedII/Interfaces/CriFs.V2.Hook.Interfaces/CriFs.V2.Hook.Interfaces.csproj",
+      "msbuildProject": "../Submodules/CriFs.V2.Hook.ReloadedII/Interfaces/CriFs.V2.Hook.Interfaces/CriFs.V2.Hook.Interfaces.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0-windows7.0": [
+      "CriFs.V2.Hook.Interfaces >= 1.0.0",
+      "Reloaded.Memory.SigScan.ReloadedII.Interfaces >= 1.2.0",
+      "Reloaded.Mod.Interfaces >= 2.4.0",
+      "Reloaded.SharedLib.Hooks >= 1.9.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\airin\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj",
+      "projectName": "p3ppc.nighttimemusic",
+      "projectPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic.csproj",
+      "packagesPath": "C:\\Users\\airin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\p3ppc.nighttimemusic\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\airin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0-windows"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "projectReferences": {
+            "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj": {
+              "projectPath": "C:\\Users\\airin\\Desktop\\Mod Making\\Temp 4\\p3ppc.nighttimemusic\\Submodules\\CriFs.V2.Hook.ReloadedII\\Interfaces\\CriFs.V2.Hook.Interfaces\\CriFs.V2.Hook.Interfaces.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net7.0-windows7.0": {
+        "targetAlias": "net7.0-windows",
+        "dependencies": {
+          "Reloaded.Memory.SigScan.ReloadedII.Interfaces": {
+            "target": "Package",
+            "version": "[1.2.0, )"
+          },
+          "Reloaded.Mod.Interfaces": {
+            "include": "Compile, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "target": "Package",
+            "version": "[2.4.0, )"
+          },
+          "Reloaded.SharedLib.Hooks": {
+            "target": "Package",
+            "version": "[1.9.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.20, 7.0.20]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
