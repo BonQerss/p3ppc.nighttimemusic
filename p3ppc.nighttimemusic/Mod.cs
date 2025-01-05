@@ -78,6 +78,8 @@ namespace p3ppc.nighttimemusic
 
             var memory = Memory.Instance;
 
+            Debugger.Launch();
+
             isFemc = (int*)memory.Allocate(4).Address;
             TimeofDay = (int*)memory.Allocate(4).Address;
 
@@ -115,28 +117,38 @@ namespace p3ppc.nighttimemusic
 
             SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC 40 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 44 24 ?? 48 8B D9", "InjectionForMapBgm", address =>
             {
+
                 string[] function =
                 {
-                    "use64",
-                    "push rcx",
-                    "sub rsp, 32",
-                    $"{_hooks.Utilities.GetAbsoluteCallMnemonics(MapBGM, out _newFuncReverseWrapper)}",
-                    "add rsp, 32",
-                    "pop rcx"
-                };
-
-                // Assuming _hooks.CreateAsmHook is a valid method call
-                InjectionForMapBgmHook = _hooks.CreateAsmHook(function, address + 741, AsmHookBehaviour.ExecuteAfter).Activate();
+                "use64",
+                // Legit zero clue which registers are important so this is all of them lol. Stopped the crashes!
+                "push rax",
+                "push rcx",
+                "push rdx",
+                "push r8",
+                "push r9",
+                "sub rsp, 40",
+                $"{_hooks.Utilities.GetAbsoluteCallMnemonics(MapBGM, out _newFuncReverseWrapper)}",
+                "add rsp, 40",
+                "pop r9",
+                "pop r8",
+                "pop rdx",
+                "pop rcx",
+                "pop rax"
+            };
+                InjectionForMapBgmHook = _hooks.CreateAsmHook(function, address + 741, AsmHookBehaviour.ExecuteFirst).Activate();
             });
 
-            SigScan("40 57 48 83 EC 20 0F B7 F9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 66 83 FF 7F 72 ?? 8B 15 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 83 C2 07 E8 ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? 8B 15 ?? ?? ?? ?? 81 F2 B3 76 EB DB", "BGM Play", address =>
+            SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play", address =>
             {
-                _BGMPlay = _hooks.CreateWrapper<PlayBGMDelegate>(address, out _);
+                var funcAddress = GetGlobalAddress((nuint)(address + 1));
+                _BGMPlay = _hooks.CreateWrapper<PlayBGMDelegate>((long)funcAddress, out _);
             });
 
-            SigScan("40 57 48 83 EC 20 0F B7 F9 48 8D 0D ?? ?? ?? ?? E8 ?? ?? ?? ?? 66 83 FF 7F 72 ?? 8B 15 ?? ?? ?? ?? 48 8D 0D ?? ?? ?? ?? 83 C2 07 E8 ?? ?? ?? ?? 8B 0D ?? ?? ?? ?? 8B 15 ?? ?? ?? ?? 81 F2 B3 76 EB DB", "BGM Play", address =>
+            SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play", address =>
             {
-                _BGMPlay2 = _hooks.CreateWrapper<PlayBGM2Delegate>(address, out _);
+                var funcAddress = GetGlobalAddress((nuint)(address + 1));
+                _BGMPlay2 = _hooks.CreateWrapper<PlayBGM2Delegate>((long)funcAddress, out _);
             });
 
             // Hook for isFemc
@@ -232,18 +244,15 @@ namespace p3ppc.nighttimemusic
             {
                 if (!var5)
                 {
-                    var taskHandle = _BGMPlay2(10913, 1);
+                    _BGMPlay(10913);
                 }
                 else
                 {
-                    var taskHandle = _BGMPlay2(10912, 1);
+                    _BGMPlay(10912);
                 }
             }
-            else
-            {
-                _MapBGMHook.OriginalFunction(task);
-            }
         }
+
 
         #region For Exports, Serialization etc.
 #pragma warning disable CS8618
