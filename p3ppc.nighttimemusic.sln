@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p3ppc.nighttimemusic", "p3ppc.nighttimemusic\p3ppc.nighttimemusic.csproj", "{9C184172-9F9B-4735-8412-84B30C2485FB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CriFs.V2.Hook.Interfaces", "Submodules\CriFs.V2.Hook.ReloadedII\Interfaces\CriFs.V2.Hook.Interfaces\CriFs.V2.Hook.Interfaces.csproj", "{C296551D-050F-46C5-93EC-93F13B209E9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9C184172-9F9B-4735-8412-84B30C2485FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C184172-9F9B-4735-8412-84B30C2485FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C184172-9F9B-4735-8412-84B30C2485FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C296551D-050F-46C5-93EC-93F13B209E9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C296551D-050F-46C5-93EC-93F13B209E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C296551D-050F-46C5-93EC-93F13B209E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C296551D-050F-46C5-93EC-93F13B209E9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
