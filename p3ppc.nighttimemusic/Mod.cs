@@ -65,7 +65,6 @@ namespace p3ppc.nighttimemusic
         {
         }
 
-
         public Mod(ModContext context)
         {
             _modLoader = context.ModLoader;
@@ -78,7 +77,6 @@ namespace p3ppc.nighttimemusic
 
             var memory = Memory.Instance;
 
-            Debugger.Launch();
 
             isFemc = (int*)memory.Allocate(4).Address;
             TimeofDay = (int*)memory.Allocate(4).Address;
@@ -118,25 +116,31 @@ namespace p3ppc.nighttimemusic
             SigScan("48 89 5C 24 ?? 48 89 6C 24 ?? 56 57 41 56 48 83 EC 40 48 8B 05 ?? ?? ?? ?? 48 33 C4 48 89 44 24 ?? 48 8B D9", "InjectionForMapBgm", address =>
             {
 
+                _MapBGMHook = _hooks.CreateHook<MapBGMDelegate>(MapBGM, address).Activate();
+
                 string[] function =
                 {
-                "use64",
-                // Legit zero clue which registers are important so this is all of them lol. Stopped the crashes!
-                "push rax",
-                "push rcx",
-                "push rdx",
-                "push r8",
-                "push r9",
-                "sub rsp, 40",
-                $"{_hooks.Utilities.GetAbsoluteCallMnemonics(MapBGM, out _newFuncReverseWrapper)}",
-                "add rsp, 40",
-                "pop r9",
-                "pop r8",
-                "pop rdx",
-                "pop rcx",
-                "pop rax"
-            };
-                InjectionForMapBgmHook = _hooks.CreateAsmHook(function, address + 741, AsmHookBehaviour.ExecuteFirst).Activate();
+                    "use64",
+                    "push rax",
+                    "push rcx",
+                    "push rdx",
+                    "push r8",
+                    "push r9",    
+                    "cmp rbx, 10",      
+                    "jne skipCode",       
+                    "sub rsp, 40",
+                    $"{_hooks.Utilities.GetAbsoluteCallMnemonics(MapBGM, out _newFuncReverseWrapper)}",
+                    "add rsp, 40",
+                    "skipCode:",
+                    "pop r9",
+                    "pop r8",
+                    "pop rdx",
+                    "pop rcx",
+                    "pop rax"
+                };
+
+                // Hook at the BGM playing location
+                InjectionForMapBgmHook = _hooks.CreateAsmHook(function, address, AsmHookBehaviour.ExecuteFirst);
             });
 
             SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play", address =>
@@ -145,7 +149,7 @@ namespace p3ppc.nighttimemusic
                 _BGMPlay = _hooks.CreateWrapper<PlayBGMDelegate>((long)funcAddress, out _);
             });
 
-            SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play", address =>
+            SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play2", address =>
             {
                 var funcAddress = GetGlobalAddress((nuint)(address + 1));
                 _BGMPlay2 = _hooks.CreateWrapper<PlayBGM2Delegate>((long)funcAddress, out _);
@@ -236,7 +240,6 @@ namespace p3ppc.nighttimemusic
 
         private void MapBGM(TaskStruct* task)
         {
-
             bool var5 = _IsFemc();
             int var6 = (int)_TimeofDay();
 
@@ -251,7 +254,11 @@ namespace p3ppc.nighttimemusic
                     _BGMPlay(10912);
                 }
             }
-        }
+
+                _MapBGMHook.OriginalFunction(task);
+
+
+            }
 
 
         #region For Exports, Serialization etc.
