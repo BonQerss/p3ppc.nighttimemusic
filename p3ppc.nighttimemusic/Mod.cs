@@ -148,14 +148,14 @@ namespace p3ppc.nighttimemusic
         {
             int FieldBGM = 0;
 
-            bool var5 = _IsFemc();
-            int var6 = (int)_TimeofDay();
+            bool GenderCheck = _IsFemc();
+            int Time = (int)_TimeofDay();
 
-            if (var6 == 5)
+            if (Time == 5)
             {
                 if (fieldMajor == 8 && fieldMinor == 1)
                 {
-                    if (var5)
+                    if (GenderCheck)
                     {
                         FieldBGM = 10912;
                     }
@@ -169,7 +169,7 @@ namespace p3ppc.nighttimemusic
                 {
                     if (fieldMinor == 1 || fieldMinor == 2 || fieldMinor == 8)
                     {
-                        if (var5)
+                        if (GenderCheck)
                         {
                             FieldBGM = 10912;
                         }
@@ -181,7 +181,7 @@ namespace p3ppc.nighttimemusic
                 }
                 else if (fieldMajor == 7 && fieldMinor == 9)  // Dorm
                 {
-                    if (var5)
+                    if (GenderCheck)
                     {
                         FieldBGM = 10912;
                     }
@@ -208,17 +208,17 @@ namespace p3ppc.nighttimemusic
 
                 if (_configuration.MusicSelection == Config.NightMusic.NightWanderer)
                 {
-                    _logger.WriteLine("[Night Time Music] Funky Jams, playing Night Wanderer by MineFormer", System.Drawing.Color.MediumSeaGreen);
+                    _logger.WriteLine("[Night Time Music] Funky Jams, playing Night Wanderer by MineFormer.", System.Drawing.Color.MediumSeaGreen);
                 }
 
                 if (_configuration.MusicSelection == Config.NightMusic.TimeVocals)
                 {
-                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Time (Vocals) by MOSQ_", System.Drawing.Color.MediumSeaGreen);
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Time (Vocals) by MOSQ_.", System.Drawing.Color.MediumSeaGreen);
                 }
 
                 if (_configuration.MusicSelection == Config.NightMusic.ColorYourNight)
                 {
-                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Color Your Night by the Atlus Sound Team", System.Drawing.Color.MediumSeaGreen);
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Color Your Night by the Atlus Sound Team.", System.Drawing.Color.MediumSeaGreen);
                 }
 
                 return 1;
