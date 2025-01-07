@@ -1,19 +1,10 @@
 ﻿using p3ppc.nighttimemusic.Configuration;
 using p3ppc.nighttimemusic.Template;
-using Reloaded.Hooks.ReloadedII.Interfaces;
 using Reloaded.Mod.Interfaces;
-using CriFs.V2.Hook;
 using CriFs.V2.Hook.Interfaces;
-using Reloaded.Mod.Interfaces.Internal;
-using System.Reflection.Emit;
 using static p3ppc.nighttimemusic.Utils;
 using Reloaded.Hooks.Definitions;
-using Reloaded.Hooks.Definitions.Enums;
 using Reloaded.Memory;
-using System;
-using System.Collections.Generic;
-using System.Net;
-using System.Diagnostics;
 using Reloaded.Memory.Interfaces;
 
 
@@ -36,10 +27,6 @@ namespace p3ppc.nighttimemusic
 
         private delegate nuint NewFuncDelegate();
 
-        private IAsmHook isFemcHook;
-        private IAsmHook TimeofDayHook;
-        private IAsmHook InjectionForFieldBgmHook;
-        private IAsmHook InjectionForMapBgmHook;
         private readonly IModLoader _modLoader;
         private readonly Reloaded.Hooks.Definitions.IReloadedHooks? _hooks;
         private readonly ILogger _logger;
@@ -60,7 +47,7 @@ namespace p3ppc.nighttimemusic
 
         private TimeOFDayDelegate _TimeofDay;
 
-        private IReverseWrapper<MapBGMDelegate> _newFuncReverseWrapper;
+  
 
         private struct TaskStruct
         {
@@ -82,9 +69,6 @@ namespace p3ppc.nighttimemusic
             isFemc = (int*)memory.Allocate(4).Address;
             TimeofDay = (int*)memory.Allocate(4).Address;
 
-            Dictionary<int, string> ValidFields =
-                       new Dictionary<int, string>();
-
             var modDir = _modLoader.GetDirectoryForModId(_modConfig.ModId);
             var criFsController = _modLoader.GetController<ICriFsRedirectorApi>();
             if (criFsController == null || !criFsController.TryGetTarget(out var criFsApi))
@@ -92,6 +76,8 @@ namespace p3ppc.nighttimemusic
                 _logger.WriteLine("Something in CriFS broke! Normal files will not load properly!", System.Drawing.Color.Red);
                 return;
             }
+
+            
 
             if (_configuration.MusicSelection == Config.NightMusic.MidnightReverie)
                 criFsApi.AddProbingPath(Path.Combine(modDir, "Midnight Reverie", "P5REssentials", "CPK"));
@@ -117,17 +103,20 @@ namespace p3ppc.nighttimemusic
             SigScan("E8 ?? ?? ?? ?? B8 0B 00 00 00 66 89 43 ?? E9 ?? ?? ?? ??", "Fix Map Screen BGM", address =>
             {
                 memory.SafeWrite((nuint)address, new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90 });
+                // Nopes out the PlayBGM function call in the LMap function, which recreates the functionality in P3R where the currently playing song continues in the map screen.
             });
 
             SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play", address =>
             {
-                var funcAddress = GetGlobalAddress((nuint)(address + 1));
+                var funcAddress = GetGlobalAddress((nuint)(address + 1)); 
+                // SigScan scans for when the PlayBGM function is called, not the function itself, then we use GetGlobalAddress to get the address of the function from that
                 _BGMPlay = _hooks.CreateWrapper<PlayBGMDelegate>((long)funcAddress, out _);
             });
 
             SigScan("E9 ?? ?? ?? ?? 81 FB 91 01 00 00", "BGM Play2", address =>
             {
-                var funcAddress = GetGlobalAddress((nuint)(address + 1));
+                var funcAddress = GetGlobalAddress((nuint)(address + 1)); // Same here
+                // Legit no idea why I have two BGM Plays, I think they're needed? No idea, don't judge.....
                 _BGMPlay2 = _hooks.CreateWrapper<PlayBGM2Delegate>((long)funcAddress, out _);
             });
 
@@ -140,7 +129,7 @@ namespace p3ppc.nighttimemusic
             // Hook for TimeofDay
             SigScan("E8 ?? ?? ?? ?? 84 C0 74 ?? E8 ?? ?? ?? ?? 3C 06", "TimeofDay", address =>
             {
-                var funcAddress = GetGlobalAddress((nuint)(address + 1));
+                var funcAddress = GetGlobalAddress((nuint)(address + 1)); // And here
                 _TimeofDay = _hooks.CreateWrapper<TimeOFDayDelegate>((long)funcAddress, out _);
 
             });
@@ -206,6 +195,32 @@ namespace p3ppc.nighttimemusic
             if (FieldBGM > 0)
             {
                 var taskHandle = _BGMPlay2(FieldBGM, 1);
+
+                if (_configuration.MusicSelection == Config.NightMusic.MidnightReverie)
+                {
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Midnight Reverie by MineFormer.", System.Drawing.Color.MediumSeaGreen);
+                }
+
+                if (_configuration.MusicSelection == Config.NightMusic.Time)
+                {
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Time by MOSQ_.", System.Drawing.Color.MediumSeaGreen);
+                }
+
+                if (_configuration.MusicSelection == Config.NightMusic.NightWanderer)
+                {
+                    _logger.WriteLine("[Night Time Music] Funky Jams, playing Night Wanderer by MineFormer", System.Drawing.Color.MediumSeaGreen);
+                }
+
+                if (_configuration.MusicSelection == Config.NightMusic.TimeVocals)
+                {
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Time (Vocals) by MOSQ_", System.Drawing.Color.MediumSeaGreen);
+                }
+
+                if (_configuration.MusicSelection == Config.NightMusic.ColorYourNight)
+                {
+                    _logger.WriteLine("[Night Time Music] Activating Funky Jams, playing Color Your Night by the Atlus Sound Team", System.Drawing.Color.MediumSeaGreen);
+                }
+
                 return 1;
             }
             else
@@ -213,29 +228,6 @@ namespace p3ppc.nighttimemusic
                 return _FieldBGMHook.OriginalFunction(fieldMajor, fieldMinor, tartarusFloor);
             }
         }
-
-        private void MapBGM(TaskStruct* task)
-        {
-            bool var5 = _IsFemc();
-            int var6 = (int)_TimeofDay();
-
-            if (var6 == 5)
-            {
-                if (!var5)
-                {
-                    _BGMPlay(10913);
-                }
-                else
-                {
-                    _BGMPlay(10912);
-                }
-                
-            }
-
-                _MapBGMHook.OriginalFunction(task);
-
-
-            }
 
 
         #region For Exports, Serialization etc.

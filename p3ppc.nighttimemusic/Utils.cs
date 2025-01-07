@@ -48,17 +48,17 @@ namespace p3ppc.nighttimemusic
 
         internal static void Log(string message)
         {
-            _logger.WriteLine($"[Visible Social Stat Points] {message}");
+            _logger.WriteLine($"[Night Time Music] {message}");
         }
 
         internal static void LogError(string message, Exception e)
         {
-            _logger.WriteLine($"[Visible Social Stat Points] {message}: {e.Message}", System.Drawing.Color.Red);
+            _logger.WriteLine($"[Night Time Music] {message}: {e.Message}", System.Drawing.Color.Red);
         }
 
         internal static void LogError(string message)
         {
-            _logger.WriteLine($"[Visible Social Stat Points] {message}", System.Drawing.Color.Red);
+            _logger.WriteLine($"[Night Time Music] {message}", System.Drawing.Color.Red);
         }
 
         // Pushes the value of an xmm register to the stack, saving it so it can be restored with PopXmm
