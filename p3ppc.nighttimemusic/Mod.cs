@@ -151,9 +151,9 @@ namespace p3ppc.nighttimemusic
             bool GenderCheck = _IsFemc();
             int Time = (int)_TimeofDay();
 
-            if (Time == 5)
+            if (Time == 5) // Night Time
             {
-                if (fieldMajor == 8 && fieldMinor == 1)
+                if (fieldMajor == 8 && fieldMinor == 1) // Paulownia Mall
                 {
                     if (GenderCheck)
                     {
@@ -165,7 +165,7 @@ namespace p3ppc.nighttimemusic
                     }
 
                 }
-                else if (fieldMajor == 9)
+                else if (fieldMajor == 9) // Iwatodai Strip Mall. For the strip mall mod I am working on.
                 {
                     if (fieldMinor == 1 || fieldMinor == 2 || fieldMinor == 8)
                     {
